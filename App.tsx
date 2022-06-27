@@ -1,20 +1,51 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {Button, FlatList, StyleSheet, Text, View} from 'react-native';
+import {Navbar} from './src/components/Navbar'
+import {AddTodo} from "./src/components/AddTodo";
+import {useState} from "react";
 
+export type todosType={
+    id:string
+    title:string
+}
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your Max!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    const [todos, setTodos] = useState<Array<todosType>>([])
+    const addTodoHandler = (title: string) => {
+
+        // const newTodo = {
+        //     id: Date.now().toString(),
+        //     title: title
+        // }
+        // setTodos([...todos, newTodo])
+        setTodos(prev=>[
+            ...prev,
+            {
+                    id: Date.now().toString(),
+                    title: title
+            }
+        ])
+    }
+
+
+
+
+    return (
+        <View>
+            <Navbar title={'Fuck'}/>
+            <View style={styles.container}>
+                <AddTodo addTodoHandler={addTodoHandler}/>
+            </View>
+
+
+
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        paddingHorizontal: 30,
+        paddingVertical: 20,
+
+    },
+
 });
