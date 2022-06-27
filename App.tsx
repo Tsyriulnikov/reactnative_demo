@@ -26,8 +26,6 @@ export default function App() {
     }
 
 
-
-
     return (
         <View>
             <Navbar title={'Fuck'}/>
@@ -35,7 +33,7 @@ export default function App() {
                 <AddTodo addTodoHandler={addTodoHandler}/>
             </View>
 
-
+            {todos.map(el=><Text key={el.id}>{el.title} </Text>)}
 
         </View>
     );
