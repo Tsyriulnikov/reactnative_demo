@@ -2,6 +2,8 @@ import {Button, FlatList, StyleSheet, Text, View} from 'react-native';
 import {Navbar} from './src/components/Navbar'
 import {AddTodo} from "./src/components/AddTodo";
 import {useState} from "react";
+import { v1 } from 'uuid';
+import {Todo} from "./src/components/Todo";
 
 export type todosType={
     id:string
@@ -19,7 +21,7 @@ export default function App() {
         setTodos(prev=>[
             ...prev,
             {
-                    id: Date.now().toString(),
+                    id: v1(),
                     title: title
             }
         ])
@@ -32,8 +34,8 @@ export default function App() {
             <View style={styles.container}>
                 <AddTodo addTodoHandler={addTodoHandler}/>
             </View>
-
-            {todos.map(el=><Text key={el.id}>{el.title} </Text>)}
+            {todos.map(el=><Todo id={el.id} title={el.title}/>)}
+            {/*{todos.map(el=><Text key={el.id}>{el.title} </Text>)}*/}
 
         </View>
     );
