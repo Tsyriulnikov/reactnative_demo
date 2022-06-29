@@ -3,14 +3,16 @@ import {Navbar} from './src/components/Navbar'
 import {AddTodo} from "./src/components/AddTodo";
 import {useState} from "react";
 import {Todo} from "./src/components/Todo";
+import {Provider} from "react-redux";
+import {store} from "./src/store/store";
 
 
-export type TodosType = {
+export type TodolistType = {
     id: string
     title: string
 }
 export default function App() {
-    const [todos, setTodos] = useState<Array<TodosType>>([])
+    const [todos, setTodos] = useState<Array<TodolistType>>([])
     const addTodoHandler = (title: string) => {
 
         // const newTodo = {
@@ -31,6 +33,7 @@ const removeTodo=(id:string)=>{
 }
 
     return (
+       <Provider store={store}>
         <View>
             <Navbar title={'Fuck'}/>
             <View style={styles.container}>
@@ -48,6 +51,7 @@ const removeTodo=(id:string)=>{
             {/*{todos.map(el => (<Todo key={el.id} id={el.id} todo={el}/>))}*/}
             {/*{todos.map(el=><Text key={el.id}>{el.title} </Text>)}*/}
         </View>
+       </Provider>
     );
 }
 
