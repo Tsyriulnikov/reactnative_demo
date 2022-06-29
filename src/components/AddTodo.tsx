@@ -1,6 +1,7 @@
 import React, {useState} from "react"
-import {View, StyleSheet, Button, TextInput, NativeSyntheticEvent, TextInputChangeEventData, Alert} from "react-native";
-
+import {View, StyleSheet, TextInput, NativeSyntheticEvent, TextInputChangeEventData, Alert} from "react-native";
+import {Button, Icon} from "native-base";
+import { AntDesign } from '@expo/vector-icons';
 type AddtodoType = {
     addTodoHandler: (title: string) => void
 }
@@ -29,7 +30,12 @@ export const AddTodo = (props: AddtodoType) => {
                        autoCapitalize={'none'}
                        autoFocus={true}
             />
-            <Button title={'Add'} onPress={addButtonHandler}/>
+            {/*<Button  title={'Add'} onPress={addButtonHandler}/>*/}
+            <Button variant="subtle"
+                    onPress={addButtonHandler}
+                    endIcon={<Icon as={AntDesign} name="plus" size="sm" />}>
+                Add
+            </Button>
         </View>
     )
 }
