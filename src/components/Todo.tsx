@@ -1,6 +1,6 @@
 import React, {useCallback} from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
-import {TodosType} from "../../App";
+// import {TodosType} from "../../Main";
 
 type TodoPropsType = {
     title: string

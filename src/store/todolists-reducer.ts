@@ -1,4 +1,4 @@
-import {TodolistType} from "../../App";
+import {TodolistType} from "../../Main";
 
 const initialState:Array<TodolistType>=[]
 
