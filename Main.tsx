@@ -9,6 +9,7 @@ import {Box, Center, Fab, Icon, useTheme} from "native-base";
 import { AntDesign } from '@expo/vector-icons';
 
 
+
 export type TodolistType = {
     id: string
     title: string
@@ -30,6 +31,7 @@ export function Main() {
         <View>
             <Navbar title={'Fuck'}/>
             <View style={styles.container}>
+
                 <AddTodo addTodoHandler={addTodoHandler}/>
                 <FlatList
                     keyExtractor={item => item.id.toString()}
@@ -40,8 +42,8 @@ export function Main() {
                 />
 
             </View>
-{/*<Example/>*/}
-        </View>
+
+</View>
     );
 }
 

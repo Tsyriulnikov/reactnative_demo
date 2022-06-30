@@ -31,7 +31,7 @@ export const AddTodo = (props: AddtodoType) => {
                        autoFocus={true}
             />
             {/*<Button  title={'Add'} onPress={addButtonHandler}/>*/}
-            <Button variant="subtle"
+            <Button variant="subtle" style={{borderRadius:50,backgroundColor:'yellow'}}
                     onPress={addButtonHandler}
                     endIcon={<Icon as={AntDesign} name="plus" size="sm" />}>
                 Add
