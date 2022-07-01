@@ -1,20 +1,31 @@
 import React from "react";
 import {Button, Box, Center, FormControl, Heading, HStack, Input, Link, VStack, Text, Checkbox} from "native-base";
 import {useForm, Controller} from "react-hook-form";
-type FormData = {
-    email: string;
-    password: string;
-    rememberMe: string
+import {useDispatch} from "react-redux";
+import {loginTC} from "../store/login-reducer";
+export type FormData = {
+    email: string
+    password: string
+    rememberMe:boolean
+    captcha?: string
 };
 export const Login = () => {
+
+    const dispatch=useDispatch()
+
     const {control, handleSubmit, formState: {errors}} = useForm<FormData>({
         defaultValues: {
             email: '',
             password: '',
-            rememberMe: ''
+            rememberMe: true,
+            captcha:''
         }
     });
-    const onSubmit = (data: FormData) => console.log(data);
+    const onSubmit = (data: FormData) =>{
+        console.log(data)
+                    dispatch(loginTC(data) as any)
+         }
+    ;
     return (
         <Center w="100%">
             <Box safeArea p="2" py="8" w="90%" maxW="290">
@@ -78,7 +89,7 @@ export const Login = () => {
                                              formState,
                                          }) => (
                                     <HStack space={6}>
-                                        <Checkbox shadow={2} value={value} onChange={onChange}
+                                        <Checkbox shadow={2} value={'true'} onChange={onChange}
                                                   accessibilityLabel="Remember me" defaultIsChecked>
                                             Remember me
                                         </Checkbox>
