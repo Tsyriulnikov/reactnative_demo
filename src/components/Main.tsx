@@ -1,10 +1,10 @@
 import {Animated, FlatList, StyleSheet, View} from 'react-native';
-import {Navbar} from './src/components/Navbar'
-import {AddTodo} from "./src/components/AddTodo";
-import {Todo} from "./src/components/Todo";
+import {Navbar} from './Navbar'
+import {AddTodo} from "./AddTodo";
+import {Todo} from "./Todo";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType, store} from "./src/store/store";
-import {addTodoListAC} from "./src/store/todolists-reducer";
+import {AppRootStateType, store} from "../store/store";
+// import {addTodoListAC} from "../store/todolists-reducer";
 import {Box, Center, Fab, Icon, useTheme} from "native-base";
 import { AntDesign } from '@expo/vector-icons';
 
@@ -20,7 +20,7 @@ export function Main() {
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
 
     const addTodoHandler = (title: string) => {
-        dispatch(addTodoListAC(title))
+        // dispatch(addTodoListAC(title))
     }
     const removeTodo = (id: string) => {
         // setTodos((prev)=>prev.filter((todo)=>id!==todo.id))
@@ -38,7 +38,8 @@ export function Main() {
                     data={todolists}
                     renderItem={({item}) => (<Todo id={item.id}
                                                    title={item.title}
-                                                   callBackRemove={removeTodo}/>)}
+                                                   // callBackRemove={removeTodo}
+                    />)}
                 />
 
             </View>

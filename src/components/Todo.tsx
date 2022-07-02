@@ -5,17 +5,17 @@ import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 type TodoPropsType = {
     title: string
     id: string
-    callBackRemove: (id: string) => void
+    // callBackRemove: (id: string) => void
 }
 export const Todo = (props: TodoPropsType) => {
 
     const handlLongPress = () => {
-        props.callBackRemove(props.id)
+        // props.callBackRemove(props.id)
     }
     return (
         <TouchableOpacity
             // onLongPress={() => handlLongPress()}
-            onLongPress={props.callBackRemove.bind(null,props.id)}
+            // onLongPress={props.callBackRemove.bind(null,props.id)}
 
             onPress={() => console.log('Pressed ', props.id)}>
             <View style={styles.todo}>
