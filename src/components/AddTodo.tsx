@@ -28,7 +28,7 @@ export const AddTodo = (props: AddtodoType) => {
                        placeholder={"Input title todo"}
                        autoCorrect={false}
                        autoCapitalize={'none'}
-                       autoFocus={true}
+                       // autoFocus={true}
             />
             {/*<Button  title={'Add'} onPress={addButtonHandler}/>*/}
             <Button variant="subtle" style={{borderRadius:50,backgroundColor:'yellow'}}
