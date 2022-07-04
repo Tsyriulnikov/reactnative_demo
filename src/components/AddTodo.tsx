@@ -7,6 +7,7 @@ type AddtodoType = {
 }
 
 export const AddTodo = (props: AddtodoType) => {
+
     const [inputTitle, setInputTitle] = useState<string>('')
     const onChangeHandler = (text: string) => {
         setInputTitle(text)

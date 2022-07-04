@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {Box, Button, Heading, HStack, Spinner} from "native-base";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchTodolistsTC} from "../store/todolists-reducer";
+import {addTodolistTC, fetchTodolistsTC} from "../store/todolists-reducer";
 import {AppRootStateType} from "../store/store";
 import {TodolistType} from "./Main";
 import {FlatList, SafeAreaView, ScrollView, StyleSheet, View} from "react-native";
@@ -36,7 +36,7 @@ export const Todolists = () => {
     }, [isLoggedIn])
 
     const addTodoHandler = (title: string) => {
-        // dispatch(addTodoListAC(title))
+         dispatch(addTodolistTC(title) as any)
     }
 
     if (!isInitialized) {
