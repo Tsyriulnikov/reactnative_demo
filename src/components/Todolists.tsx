@@ -52,8 +52,6 @@ export const Todolists = () => {
 
     return (
 
-
-
         isLoggedIn ?
             <Box>
             <Navbar title={'Fuck'}/>

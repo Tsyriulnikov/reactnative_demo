@@ -3,6 +3,7 @@ import {Provider} from "react-redux";
 import {NativeBaseProvider} from 'native-base';
 import {Todolists} from "./src/components/Todolists";
 
+
 export default function App() {
 
     return (
