@@ -10,16 +10,13 @@ import {Todo} from "./Todo";
 import {initializeAppTC, logoutTC} from "../store/app-reducer";
 import {Login} from "./Login";
 import {Navbar} from "./Navbar";
+import {Tasks} from "./Tasks";
 
 export const Todolists = () => {
     const dispatch = useDispatch()
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
-    const handlerOnPress = () => {
-        dispatch(fetchTodolistsTC() as any)
-    }
-    const handlerOnPressLogOut = () => {
-        dispatch(logoutTC() as any)
-    }
+
+
     const isLoggedIn = useSelector<AppRootStateType, boolean>(state => state.login.isLoggedIn)
     const isInitialized = useSelector<AppRootStateType, boolean>(state => state.app.isInitialized)
 
@@ -34,6 +31,7 @@ export const Todolists = () => {
         }
         dispatch(fetchTodolistsTC() as any)
     }, [isLoggedIn])
+
 
     const addTodoHandler = (title: string) => {
          dispatch(addTodolistTC(title) as any)
@@ -57,8 +55,8 @@ export const Todolists = () => {
             <Navbar title={'Fuck'}/>
             <Box alignItems="center">
 
-                {/*<Button onPress={handlerOnPress}>Click Me</Button>*/}
-                <Button onPress={handlerOnPressLogOut}>LogOut</Button>
+
+
                 <View style={styles.container}>
 
                     <AddTodo addTodoHandler={addTodoHandler}/>
@@ -72,8 +70,10 @@ export const Todolists = () => {
 
                 </View>
             </Box>
+                <Tasks/>
             </Box>
             : <Login/>
+
     )
 }
 

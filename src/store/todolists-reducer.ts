@@ -49,7 +49,7 @@ export const fetchTodolistsTC = () => {
             .then((res) => {
                 dispatch(setTodolistsAC(res.data))
                 dispatch(setAppStatusAC('succeeded'))
-                console.log(res.data)
+                // console.log(res.data)
             })
     }
 }

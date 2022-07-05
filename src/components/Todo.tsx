@@ -1,9 +1,12 @@
-import React, {useCallback} from "react";
+import React, {useCallback, useEffect} from "react";
 import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {Stack, Button, Icon, HStack} from "native-base";
 import {MaterialCommunityIcons, Ionicons} from "@expo/vector-icons";
 import {useDispatch} from "react-redux";
 import {removeTodolistTC} from "../store/todolists-reducer";
+import {Tasks} from "./Tasks";
+import {setIdCurrentTodoAC, setOpenTasksAC} from "../store/app-reducer";
+import {fetchTasksTC} from "../store/tasks-reducer";
 
 type TodoPropsType = {
     title: string
@@ -11,19 +14,31 @@ type TodoPropsType = {
 }
 export const Todo = (props: TodoPropsType) => {
     const dispatch = useDispatch()
+
     const handlLOnPressDelete = () => {
         dispatch(removeTodolistTC(props.id) as any)
     }
+
+    const handlPressTodo = () => {
+        dispatch(setIdCurrentTodoAC(props.id))
+        // dispatch(fetchTasksTC(props.id) as any)
+        dispatch(setOpenTasksAC(true))
+
+    }
+    useEffect(() => {
+
+        dispatch(fetchTasksTC(props.id) as any)
+    }, [])
+
+
     return (
         <Stack space={3} alignItems="center">
 
             <HStack space={3} alignItems="center">
 
                 <TouchableOpacity
-                    // onLongPress={() => handlLongPress()}
-                    // onLongPress={props.callBackRemove.bind(null,props.id)}
-
-                    onPress={() => console.log('Pressed ', props.id)}>
+                    onPress={handlPressTodo}
+                >
                     <View style={styles.todo}>
                         <Text>{props.title}</Text>
 
