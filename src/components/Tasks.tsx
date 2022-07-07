@@ -3,10 +3,10 @@ import {Box, Center, Checkbox, Heading, HStack, Icon, IconButton, Input, View, V
 import {Feather, Entypo} from "@expo/vector-icons";
 
 type TasksPropType = {
-    id:string
-    title:string
+    id: string
+    title: string
 }
-export const Tasks = (props:TasksPropType) => {
+export const Tasks = (props: TasksPropType) => {
 
     // const instState = [{
     //         title: "Code",
@@ -58,18 +58,23 @@ export const Tasks = (props:TasksPropType) => {
     //     };
 
     return (
+        <Center w="100%">
+            <Box maxW="300" w="100%" >
 
-        <VStack space={2}>
 
-            <HStack w="100%" justifyContent="space-between" alignItems="center" key={props.id}>
-                <Checkbox isChecked={item.isCompleted} onChange={() => handleStatusChange(itemI)} value={item.title}></Checkbox>
-                 <Text width="100%" flexShrink={1} textAlign="left" mx="2" >
-                     {props.title}
-                 </Text>
+                <VStack space={2}>
 
-            </HStack>
-        </VStack>
+                    <HStack w="100%" justifyContent="space-between" alignItems="center" key={props.id} padding={2}>
+                        {/*<Checkbox isChecked={true} value={props.title}></Checkbox>*/}
+                        <Text width="100%" flexShrink={1} textAlign="left" mx="2">
+                            {props.title}
+                        </Text>
 
+                    </HStack>
+                </VStack>
+
+            </Box>
+        </Center>
 
 
     )

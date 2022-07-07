@@ -55,10 +55,8 @@ export const Todo = (props: TodoPropsType) => {
 
           {/*//////////////////////////////*/}
 
-            <Box maxW="300" w="100%">
-                {/*<Heading mb="2" size="md">*/}
-                {/*    Wednesday*/}
-                {/*</Heading>*/}
+            <Box maxW="300" w="100%" borderColor="coolGray.200" borderWidth="1" borderRadius={"5"} marginBottom={"10"}>
+
                 <VStack space={4}>
                     <HStack space={2}>
                         <Input flex={1}
