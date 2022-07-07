@@ -1,6 +1,7 @@
 import {todolistsAPI, TodolistType} from '../api/todolists-api'
 import {Dispatch} from 'redux'
 import {RequestStatusType, setAppStatusAC, SetAppStatusActionType} from '../store/app-reducer'
+import {AppThunk} from "./store";
 
 const initialState: Array<TodolistDomainType> = []
 
@@ -42,7 +43,7 @@ export const changeTodolistEntityStatusAC = (id: string, status: RequestStatusTy
 export const setTodolistsAC = (todolists: Array<TodolistType>) => ({type: 'SET-TODOLISTS', todolists} as const)
 
 // thunks
-export const fetchTodolistsTC = () => {
+export const fetchTodolistsTC = ():AppThunk => {
     return (dispatch: ThunkDispatch) => {
         dispatch(setAppStatusAC('loading'))
         todolistsAPI.getTodolists()

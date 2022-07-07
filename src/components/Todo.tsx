@@ -1,12 +1,12 @@
 import React, {useCallback, useEffect} from "react";
-import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
-import {Stack, Button, Icon, HStack} from "native-base";
-import {MaterialCommunityIcons, Ionicons} from "@expo/vector-icons";
-import {useDispatch} from "react-redux";
+import {View, Text, StyleSheet, TouchableOpacity, FlatList} from "react-native";
+import {Stack, Button, Icon, HStack, Heading, Input, IconButton, Box, VStack} from "native-base";
+import {Feather, MaterialCommunityIcons} from "@expo/vector-icons";
+import {useDispatch, useSelector} from "react-redux";
 import {removeTodolistTC} from "../store/todolists-reducer";
-import {Tasks} from "./Tasks";
-import {setIdCurrentTodoAC, setOpenTasksAC} from "../store/app-reducer";
-import {fetchTasksTC} from "../store/tasks-reducer";
+import {Tasks} from "./Tasks";;
+import {fetchTasksTC, TasksStateType} from "../store/tasks-reducer";
+import {AppRootStateType} from "../store/store";
 
 type TodoPropsType = {
     title: string
@@ -14,17 +14,17 @@ type TodoPropsType = {
 }
 export const Todo = (props: TodoPropsType) => {
     const dispatch = useDispatch()
-
+    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
     const handlLOnPressDelete = () => {
         dispatch(removeTodolistTC(props.id) as any)
     }
 
-    const handlPressTodo = () => {
-        dispatch(setIdCurrentTodoAC(props.id))
-        // dispatch(fetchTasksTC(props.id) as any)
-        dispatch(setOpenTasksAC(true))
+    // const handlPressTodo = () => {
+        // dispatch(setIdCurrentTodoAC(props.id))
+        // // dispatch(fetchTasksTC(props.id) as any)
+        // dispatch(setOpenTasksAC(true))
 
-    }
+    // }
     useEffect(() => {
 
         dispatch(fetchTasksTC(props.id) as any)
@@ -37,7 +37,7 @@ export const Todo = (props: TodoPropsType) => {
             <HStack space={3} alignItems="center">
 
                 <TouchableOpacity
-                    onPress={handlPressTodo}
+                    // onPress={handlPressTodo}
                 >
                     <View style={styles.todo}>
                         <Text>{props.title}</Text>
@@ -52,6 +52,45 @@ export const Todo = (props: TodoPropsType) => {
                         onPress={handlLOnPressDelete} colorScheme={'amber'}
                 />
             </HStack>
+
+          {/*//////////////////////////////*/}
+
+            <Box maxW="300" w="100%">
+                {/*<Heading mb="2" size="md">*/}
+                {/*    Wednesday*/}
+                {/*</Heading>*/}
+                <VStack space={4}>
+                    <HStack space={2}>
+                        <Input flex={1}
+                            // onChangeText={v => setInputValue(v)}
+                            // value={inputValue}
+                               placeholder="Add Task" />
+                        <IconButton borderRadius="sm" variant="solid"
+                                    icon={<Icon as={Feather} name="plus" size="sm" color="warmGray.50" />}
+                            //             onPress={() => {
+                            //     addItem(inputValue);
+                            //     setInputValue("");
+                            // }}
+                        />
+                    </HStack>
+
+                    <VStack space={2}>
+
+            <FlatList
+                keyExtractor={item => item.id}
+                data={tasks[props.id]}
+                // renderItem={({item}) => (<View><Text>{item.title}</Text></View>)}
+                renderItem={({item}) => (<Tasks id={item.id} title={item.title}/>)}
+
+            />
+
+
+                    </VStack>
+                </VStack>
+            </Box>
+
+
+  {/*/////////////////////////////////////////                      */}
         </Stack>
     )
 }

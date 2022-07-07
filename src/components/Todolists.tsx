@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {Box, Button, Heading, HStack, Spinner} from "native-base";
 import {useDispatch, useSelector} from "react-redux";
 import {addTodolistTC, fetchTodolistsTC} from "../store/todolists-reducer";
-import {AppRootStateType} from "../store/store";
+import {AppDispatch, AppRootStateType} from "../store/store";
 import {TodolistType} from "./Main";
 import {FlatList, SafeAreaView, ScrollView, StyleSheet, View} from "react-native";
 import {AddTodo} from "./AddTodo";
